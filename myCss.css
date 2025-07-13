@@ -1,123 +1,451 @@
-/* 隐藏所有audio元素，用于不显示默认音频控件 */
+/* 基础样式 */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: '华文行楷', sans-serif;
+    height: 100vh;
+    overflow-x: hidden;
+    color: white;
+}
+
 audio {
     display: none;
 }
 
-/* 彩虹渐变背景样式 */
-#grad {
-    height: 80px;
-    background-color: red; /* 浏览器不支持渐变时的回退颜色 */
-    background-image: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
-}
-
-/* 全局页面基础样式 */
-body {
-    margin: 0; /* 去除默认外边距 */
-    height: 100vh; /* 视口高度 */
-    background-color: #eee; /* 浅灰色背景 */
-}
-
-/* 二级标题样式 */
-h2 {
-    text-align: center; /* 居中对齐 */
-    color: rgb(93, 0, 255); /* 紫色文字 */
-}
-
-/* 段落文本样式 */
-p {
-    text-indent: 2em; /* 首行缩进2字符 */
-    text-align: justify; /* 两端对齐 */
-}
-
-/* 阴影效果类 */
-.yinying {
-    box-shadow: 2px 2px 1px black; /* 右下阴影效果 */
-}
-
-/* 弹性布局类 */
 .flex {
     display: flex;
 }
 
-/* 白色背景类 */
+.box {
+    font-family: '华文行楷', sans-serif;
+}
+
 .baise {
     background-color: white;
 }
 
-/* 弹性布局比例1 */
+.yinying {
+    box-shadow: 2px 2px 1px black;
+}
+
 .flex1 {
     flex: 1;
 }
 
-/* 弹性列布局 */
 .column {
-    margin-bottom: 2em; /* 底部外边距 */
-    flex-direction: column; /* 垂直排列 */
+    flex-direction: column;
 }
 
-/* 导航项样式 */
+.ai-center {
+    align-items: center;
+}
+
+/* 侧边栏样式 */
+.cebain {
+    width: 200px;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 2;
+    overflow-y: auto;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.avatar-container {
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid #999;
+}
+
+.avatar-img {
+    width: 60px;
+    height: auto;
+    max-height: 70px;
+}
+
+/* 文字渐变效果 */
+.gradient-text {
+    background: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: rainbow 5s linear infinite;
+    background-size: 200% 100%;
+    margin-left: 10px;
+    font-weight: bold;
+}
+
 .daohang {
-    padding: 10px 20px; /* 内边距 */
-    border-bottom: 1px solid rgb(201, 190, 190); /* 底部边框 */
-    font-size: 14px; /* 字体大小 */
-    color: #666; /* 文字颜色 */
-    cursor: pointer; /* 鼠标指针样式 */
+    padding: 10px 20px;
+    border-bottom: 1px solid rgb(201, 190, 190);
+    font-size: 14px;
+    cursor: pointer;
+    background: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: rainbow 5s linear infinite;
+    background-size: 200% 100%;
 }
 
-/* 导航项悬停效果 */
-.daohang:hover {
-    background-color: #f5f5f5; /* 悬停背景色 */
-}
-
-/* 响应式设计 - 屏幕宽度小于600px时的样式 */
-@media (max-width: 600px) {
-    .cebain {
-        display: none; /* 隐藏侧边栏 */
-    }
-
-    .neirong {
-        flex-direction: column; /* 内容区域改为垂直布局 */
-    }
-}
-
-/* 图片基础样式 */
-.img img {
-    width: 60px; /* 固定宽度 */
-    height: auto; /* 高度自适应 */
-    max-height: 100% /* 最大高度限制 */
-}
-
-/* 旋转动画定义 */
-@keyframes img {
+@keyframes rainbow {
     0% {
-        transform: rotate(0deg);
-    }
-    20% {
-        transform: rotate(72deg) scale(1.2);
-    }
-    40% {
-        transform: rotate(144deg) scale(1.4);
-    }
-    60% {
-        transform: rotate(216deg) scale(1.6);
-    }
-    80% {
-        transform: rotate(288deg) scale(1.8);
+        background-position: 0 50%;
     }
     100% {
-        transform: rotate(360deg) scale(2);
+        background-position: 100% 50%;
     }
 }
 
-/* 观音图片特殊效果 */
+.daohang:hover {
+    background-color: rgba(245, 245, 245, 0.3);
+}
+
+/* 下拉菜单样式 */
+.dropdown {
+    position: relative;
+    display: block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    background-color: #f9f9f9;
+    width: 100%;
+    min-width: 160px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    animation: fadeIn 0.3s;
+    overflow: hidden;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    border-bottom: 1px solid #ddd;
+    transition: all 0.3s;
+    background: none;
+    -webkit-text-fill-color: #333;
+    animation: none;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+    color: #fff;
+    -webkit-text-fill-color: #fff;
+}
+
+/* 新闻标记 */
+.news-badge {
+    position: absolute;
+    right: 30px;
+    background: #ff4757;
+    color: white;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    font-size: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.online-badge {
+    font-size: 10px;
+    background: #1ec7e6;
+    color: white;
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+
+/* 主内容区 */
+.main-content-area {
+    margin-left: 220px;
+    width: calc(100% - 220px);
+    height: 100vh;
+    overflow-y: auto;
+    background: linear-gradient(135deg,
+    rgba(106, 17, 203, 0.8) 0%,
+    rgba(37, 117, 252, 0.8) 50%,
+    rgba(29, 209, 161, 0.8) 100%) fixed;
+}
+
+/* 头部栏 */
+.header {
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    height: 80px;
+    z-index: 1;
+    background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+}
+
+/* 动画div */
+.animated_div {
+    width: 80px;
+    height: 60px;
+    background: #92B901;
+    color: #ffffff;
+    position: relative;
+    font-weight: bold;
+    font-size: 15px;
+    padding: 10px;
+    float: left;
+    margin: 5px;
+    transition: all 0.3s;
+    border-radius: 5px;
+    opacity: 0.4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-shadow: none;
+}
+
+.animated_div:hover {
+    transform: rotate(360deg);
+    opacity: 1;
+    background: #1ec7e6;
+    width: 90px;
+    height: 70px;
+    font-size: 14px;
+}
+
+.subtitle {
+    font-size: 50%;
+    margin-top: 5px;
+}
+
+/* 内容区 */
+.neirong {
+    position: relative;
+    flex: 1;
+    overflow: auto;
+    padding: 20px;
+}
+
+/* 修改后的文字内容样式 */
+.text {
+    position: relative;
+    z-index: 1;
+    padding: 30px;
+    margin: 20px;
+    border-radius: 10px;
+    max-width: 800px;
+    /* 添加彩色渐变文字效果 */
+    background: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: rainbow 5s linear infinite;
+    background-size: 200% 100%;
+    /* 保留文字阴影增强可读性 */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* 确保段落文字也继承渐变效果 */
+.text p {
+    text-indent: 2em;
+    text-align: justify;
+    margin: 10px 0;
+    /* 继承父元素的文字渐变效果 */
+    background: inherit;
+    -webkit-background-clip: inherit;
+    background-clip: inherit;
+    -webkit-text-fill-color: inherit;
+    display: inline; /* 确保渐变效果应用于每行文字 */
+}
+
+/* 特殊强调文本 */
+.text b {
+    font-weight: bold;
+    /* 可以单独设置强调文本的颜色 */
+    background: linear-gradient(90deg, #ff0000, #ff7f00);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* 居中文本 */
+.text .center {
+    text-align: center;
+    display: block; /* 确保整个文本块作为一个整体渐变 */
+}
+
+
+/* 评论区 */
+.comment-container {
+    position: relative;
+    z-index: 10;
+    margin: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    max-width: 800px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #333;
+}
+
+.comment-title {
+    text-align: center;
+    margin: 5px 0;
+    color: #1ec7e6;
+}
+
+.comment-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.comment-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    resize: vertical;
+    min-height: 80px;
+    margin-bottom: 10px;
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.comment-form button {
+    align-self: flex-end;
+    background: #1ec7e6;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.comment-form button:hover {
+    background: #169cb5;
+}
+
+.comment-list {
+    max-height: 300px;
+    overflow-y: auto;
+    margin-top: 15px;
+}
+
+.comment {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 10px;
+    margin-bottom: 10px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.comment-author {
+    font-weight: bold;
+    color: #1e88e5;
+}
+
+.comment-content {
+    margin: 5px 0;
+}
+
+.comment-meta {
+    display: flex;
+    justify-content: space-between;
+    color: #eee;
+    font-size: 12px;
+}
+
+.like-btn {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.like-btn.liked {
+    color: #ff4757;
+}
+
+/* 日期按钮 */
+.date-button-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 100;
+}
+
+.date-button-container button {
+    padding: 8px 15px;
+    background: #1ec7e6;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s;
+}
+
+.date-button-container button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .cebain {
+        width: 160px;
+    }
+
+    .main-content-area {
+        margin-left: 180px;
+        width: calc(100% - 180px);
+    }
+}
+
+@media (max-width: 600px) {
+    .cebain {
+        display: none;
+    }
+
+    .main-content-area {
+        margin-left: 0;
+        width: 100%;
+        background: linear-gradient(135deg,
+        rgba(106, 17, 203, 0.9) 0%,
+        rgba(37, 117, 252, 0.9) 50%,
+        rgba(29, 209, 161, 0.9) 100%);
+    }
+}
+
+/* 动画 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 观音图片特效 */
 .guanyin-img {
     width: 60px;
     height: 60px;
-    position: relative;
-    animation: guanyinGlow 5s infinite alternate; /* 循环发光动画 */
+    animation: guanyinGlow 5s infinite alternate;
 }
 
-/* 彩虹发光动画定义 */
 @keyframes guanyinGlow {
     0% {
         filter: drop-shadow(0 0 5px #ff0000);
@@ -140,220 +468,4 @@ p {
     100% {
         filter: drop-shadow(0 0 20px #9400d3);
     }
-}
-
-/* 下拉菜单容器 */
-.dropdown {
-    position: relative;
-    display: inline-block;
-    width: 100%;
-}
-
-/* 下拉菜单内容样式 */
-.dropdown-content {
-    display: none; /* 默认隐藏 */
-    position: absolute;
-    background-color: #f9f9f9; /* 背景色 */
-    min-width: 160px; /* 最小宽度 */
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2); /* 阴影效果 */
-    z-index: 1; /* 层级 */
-    animation: fadeIn 0.5s; /* 淡入动画 */
-}
-
-/* 显示下拉菜单的类 */
-.dropdown-content.show {
-    display: block;
-    animation: fadeIn 0.3s forwards;
-}
-
-/* 淡入动画定义 */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-10px)
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0)
-    }
-}
-
-/* 淡出动画定义 */
-@keyframes fadeOut {
-    from {
-        opacity: 1;
-        transform: translate(0);
-    }
-    to {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-}
-
-/* 下拉菜单链接样式 */
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    border-bottom: 1px solid #ddd; /* 底部边框 */
-    transition: background 0.2s; /* 背景色过渡效果 */
-}
-
-/* 下拉菜单链接悬停效果 */
-.dropdown-content a:hover {
-    background-color: #f1f1f1;
-}
-
-/* 时间显示样式 */
-.time-display {
-    padding: 10px 20px;
-    font-size: 14px;
-    color: #666;
-    text-align: center;
-    background: #f5f5f5;
-}
-
-/* 新闻标记样式 */
-.news-badge {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: #ff4757; /* 红色背景 */
-    color: white;
-    border-radius: 50%; /* 圆形 */
-    width: 18px;
-    height: 18px;
-    font-size: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* 下拉菜单悬停效果 */
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-/* 内容区域样式 */
-.neirong {
-    position: relative; /* 为伪元素定位做准备 */
-}
-
-/* 内容区域背景图片 */
-.neirong::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: url('./九寨沟.jpeg'); /* 背景图片路径 */
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    z-index: 0; /* 确保在内容下方 */
-}
-
-/* 文本内容样式 */
-.text {
-    position: relative; /* 确保在背景上方 */
-    z-index: 1;
-    padding: 30px;
-    margin: 20px;
-    background-color: rgba(255, 255, 255, 0.7); /* 半透明白色背景 */
-    border-radius: 10px;
-    display: inline-block;
-    /* 渐变文字效果 */
-    background-image: linear-gradient(to right, #961475, #E6D205 25%, #147B96 50%, #3205e6 75%, #689614);
-    -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-animation: maskedAnimation 4s infinite linear;
-}
-
-/* 特殊字体类 */
-.box {
-    font-family: '华文行楷', sans-serif;
-}
-
-/* 文字渐变动画 */
-@keyframes maskedAnimation {
-    0% {
-        background-position: 0 0;
-    }
-    100% {
-        background-position: -100% 0;
-    }
-}
-
-/* 动画div元素基础样式 */
-.animated_div {
-    width: 80px;
-    height: 60px;
-    background: #92B901;
-    color: #ffffff;
-    position: relative;
-    font-weight: bold;
-    font-size: 15px;
-    padding: 10px;
-    float: left;
-    margin: 5px;
-    /* 多种过渡效果 */
-    transition-property: width, height, transform, background, font-size, opacity;
-    transition-duration: 1s, 1s, 1s, 1s, 1s, 1s;
-    border-radius: 5px;
-    opacity: 0.4;
-}
-
-/* 动画div悬停效果 */
-.animated_div:hover {
-    transform: rotate(360deg); /* 旋转360度 */
-    opacity: 1;
-    background: #1ec7e6;
-    width: 90px;
-    height: 60px;
-    font-size: 14px;
-}
-
-/* 重复的下拉菜单链接样式 */
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-}
-
-/* 重复的下拉菜单链接悬停效果 */
-.dropdown-content a:hover {
-    background-color: #f1f1f1;
-}
-
-/* 重复的下拉菜单悬停效果 */
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-/* 新增按钮样式 */
-button {
-    padding: 8px 15px;
-    background: #1ec7e6;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: all 0.3s;
-    margin: 10px;
-    font-size: 14px;
-}
-
-button:hover {
-    background: #169cb5;
-    transform: translateY(-2px);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-button:active {
-    transform: translateY(0);
 }
