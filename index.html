@@ -4,28 +4,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>我的个人网站</title>
-    <script src="./myScript.js"></script>
-    <link rel="stylesheet" href="./myCss.css">
+    <link rel="stylesheet" href="myCss.css">
+    <script src="myScript.js"></script>
 </head>
 <body class="flex box">
-<div class="embed"></div>
-<!--侧边栏-->
-<div style="width: 200px; z-index: 2;" class="cebain baise yinying">
-    <!--头像栏-->
-    <div style="padding: 10px;align-items: center;justify-content:center ;border-bottom: 1px solid #999;" class="flex ">
-        <img src="./玉雕.jpeg" style="width:60px; height:auto;max-height:70px" alt="头像"/>
-        <div style="margin-left:10px ;">周增尼</div>
+<!-- 侧边栏 -->
+<div class="cebain baise yinying">
+    <!-- 头像栏 -->
+    <div class="avatar-container flex">
+        <img src="./玉雕.jpeg" class="avatar-img" alt="头像"/>
+        <div class="gradient-text">周增尼</div>
     </div>
 
-    <!--导航栏-->
+    <!-- 导航栏 -->
     <div class="flex1">
         <div class="daohang" onclick="window.open('https://www.gutenberg.org/ebooks/23950', '_blank')">中华五千年历史
         </div>
         <div class="daohang"
              onclick="window.open('https://www.gutenberg.org/ebooks/search/?query=tang+poetry', '_blank')">唐诗宋词
         </div>
+
         <!-- 中医瑰宝下拉菜单 -->
         <div class="dropdown daohang">
             中医瑰宝 ▼
@@ -55,43 +54,51 @@
     </div>
 </div>
 
-<!--主区域-->
-<div class="flex1 flex column">
-    <!--头部栏-->
-    <div style="padding: 10px;align-items: center;justify-content:center ;border-bottom: 1px solid #999; height:80px;z-index: 1;"
-         id="grad" class="baise yinying flex">
-        <div class="animated_div "><h2>周增尼</h2><span style="font-size: 50%;"></span><br></div>
+<!-- 主区域 -->
+<div class="main-content-area flex column">
+    <!-- 头部栏 -->
+    <div class="header grad-bg baise yinying flex">
+        <div class="animated_div">
+            <h2>周增尼</h2>
+            <span class="subtitle">个人网站</span>
+        </div>
     </div>
-    <!--内容区-->
+
+    <!-- 内容区 -->
+
     <div style="overflow:auto;background-image:url('./九寨沟.jpeg'); background-repeat:no-repeat;
       background-attachment:scroll;background-position: center;"
          class="neirong flex1 flex">
         <div class="text">
             <p>欢迎来到我的网站</p>
-            <p></p>
-            <p>你好啊，我是<b>周增尼</b>。这是我从零开始学习的编程之路,被动获取的知识很难留给你。
-                自动得来的才更容易沉淀到你。被动多得的知识不容易珍惜，主动得来的知识要克服各种困难，
+            <p>你好啊，我是<b>周增尼</b>。这是我从零开始学习的编程之路，被动获取的知识很难留给你。</p>
+            <p>自动得来的才更容易沉淀到你。被动多得的知识不容易珍惜，主动得来的知识要克服各种困难，
                 历经千辛万苦才能更加刻骨铭心，好像刻印在你的脑海里，永不丢失。学编程不难，要学一种新知识，
-                要把自己丢在那个环境里才容易学到。比如：学粤语，周围的人都说粤语，刚开始你很懵逼。久了，慢慢学会，要大胆去学别人说。
-            </p>
+                要把自己丢在那个环境里才容易学到。比如：学粤语，周围的人都说粤语，刚开始你很懵逼。久了，慢慢学会，要大胆去学别人说。</p>
             <p class="center">这是我的个人网站</p>
         </div>
+
+        <!-- 评论区 -->
+        <div class="comment-container">
+            <div class="comment-section">
+                <h4 class="comment-title">访客留言</h4>
+                <div class="comment-form">
+                    <label for="comment-input">留言评论</label>
+                    <textarea id="comment-input" placeholder="请输入您的评论..."></textarea>
+                    <button onclick="addComment()">发表评论</button>
+                </div>
+                <div id="comment-list" class="comment-list"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 显示日期按钮 -->
+    <div class="date-button-container">
+        <button onclick="showDate(this)">显示日期</button>
     </div>
 </div>
-<div style="position: fixed; bottom: 20px; right: 20px; z-index: 100;">
-    <button onclick="showDate(this)"
-            style="padding: 8px 15px;
-                   background: #1ec7e6;
-                   color: white;
-                   border: none;
-                   border-radius: 4px;
-                   cursor: pointer;
-                   font-size: 14px;
-                   box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-                   transition: all 0.3s;">
-        显示日期
-    </button>
-</div>
+
+<!-- 背景音乐 -->
 <audio controls loop autoplay>
     <source src="./林子祥 - 敢爱敢做.mp3" type="audio/mpeg"/>
 </audio>
